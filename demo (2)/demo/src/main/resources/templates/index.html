@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mascota Spring Boot</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; background-color: #f4f4f4;}
+        .card { background: white; padding: 20px; display: inline-block; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .stat { font-size: 1.2em; margin: 10px; }
+        button { padding: 10px 20px; font-size: 1em; cursor: pointer; margin: 5px;}
+        .emoji { font-size: 4em; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1 th:text="'Mascota: ' + ${mascota.nombre}">Nombre</h1>
+        
+        <div class="emoji">👾</div>
+
+        <div class="stat">
+            Hambre: <b th:text="${mascota.hambre}">50</b>/100
+        </div>
+        <div class="stat">
+            Felicidad: <b th:text="${mascota.felicidad}">50</b>/100
+        </div>
+
+        <hr/>
+
+        <form action="/accion" method="post">
+            <button name="tipo" value="alimentar" style="background:orange;">Alimentar 🍖</button>
+            <button name="tipo" value="jugar" style="background:lightblue;">Jugar 🎾</button>
+        </form>
+    </div>
+
+</body>
+</html>
