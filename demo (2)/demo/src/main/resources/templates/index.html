@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Mi Ballena Virtual</title>
+    <title>Mi Pollo Virtual</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -79,13 +79,13 @@
 <body>
 
     <div class="container">
-        <h1 th:text="${mascota.nombre}">Wally</h1>
+        <h1 th:text="${mascota.nombre}">Pepe</h1>
 
         <div class="pet-image-container">
             <img th:if="${mascota.viva}" 
-                  th:src="@{'/images/' + ${mascota.imagenEstado}}" 
+                  th:src="@{'/Images/' + ${mascota.imagenEstado}}" 
                   class="pet-image" alt="Ballena">
-             <div th:unless="${mascota.viva}" style="font-size: 100px;">💀</div>
+             <div th:unless="${mascota.viva}" style="font-size: 100px;"></div>
         </div>
 
         <div class="stats-grid" th:if="${mascota.viva}">

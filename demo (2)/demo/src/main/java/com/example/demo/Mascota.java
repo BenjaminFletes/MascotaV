@@ -50,14 +50,14 @@ public class Mascota {
     public String getImagenEstado() {
         if (hambre <= 0 || felicidad <= 0 || energia <= 0) {
             this.viva = false;
-            return "ballena-muerta.png";
+            return "PolloMuerto.png";
         }
-        if (higiene < 40) return "ballena-sucia.png"; // La suciedad es prioridad visual
-        if (hambre < 40) return "ballena-hambrienta.png";
-        if (energia < 40) return "ballena-cansada.png";
-        if (felicidad > 90 && hambre > 90) return "ballena-feliz.png";
+        if (higiene < 40) return "PolloSucio.png"; // La suciedad es prioridad visual
+        if (hambre < 40) return "PolloHambriento.png";
+        if (energia < 40) return "PolloCansado.png";
+        if (felicidad > 90 && hambre > 90) return "PolloFeliz.png";
         
-        return "ballena-normal.png"; // Estado por defecto
+        return "PolloNormal.png"; // Estado por defecto
     }
 
     // --- GETTERS ---
