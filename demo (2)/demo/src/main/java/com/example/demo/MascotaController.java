@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo; // ¡REVISA EL PAQUETE!
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,23 +9,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MascotaController {
 
-    // Instanciamos la mascota aquí (en una app real usaríamos una Base de Datos)
-    private Mascota miMascota = new Mascota("Pixel");
+    private Mascota miMascota = new Mascota("Wally"); // Nuestra ballena
 
     @GetMapping("/")
     public String verMascota(Model model) {
-        // Pasamos el objeto Java a la vista (HTML)
         model.addAttribute("mascota", miMascota);
-        return "index"; // Buscará index.html
+        return "index";
     }
 
     @PostMapping("/accion")
     public String realizarAccion(@RequestParam String tipo) {
-        if (tipo.equals("alimentar")) {
-            miMascota.alimentar();
-        } else if (tipo.equals("jugar")) {
-            miMascota.jugar();
+        switch (tipo) {
+            case "alimentar": miMascota.alimentar(); break;
+            case "jugar":    miMascota.jugar(); break;
+            case "dormir":   miMascota.dormir(); break;
+            case "limpiar":  miMascota.limpiar(); break;
         }
-        return "redirect:/"; // Recarga la página para ver cambios
+        return "redirect:/";
     }
 }
