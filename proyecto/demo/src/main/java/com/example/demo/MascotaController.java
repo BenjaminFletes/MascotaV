@@ -27,4 +27,11 @@ public class MascotaController {
         }
         return "redirect:/";
     }
+
+    // --- NUEVA FUNCIÓN PARA REINICIAR ---
+    @PostMapping("/reiniciar")
+    public String reiniciar() {
+        miMascota = new Mascota("Wally"); // Crea una mascota nueva y fresca
+        return "redirect:/";
+    }
 }

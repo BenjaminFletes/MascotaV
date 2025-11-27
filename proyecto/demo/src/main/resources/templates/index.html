@@ -5,7 +5,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Fondo marino */
+            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Fondo cielo/marino */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -13,7 +13,7 @@
             margin: 0;
         }
         .container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -66,13 +66,14 @@
             border: none; border-radius: 8px; font-weight: bold; color: white; cursor: pointer;
             font-size: 1em; transition: opacity 0.2s;
         }
-        button:hover { opacity: 0.8; }
-        button:disabled { background-color: #b2bec3; cursor: not-allowed; }
-
+        button:hover { opacity: 0.9; transform: translateY(-2px); }
+        button:active { transform: translateY(0); }
+        
         .btn-eat { background-color: #fdcb6e; }
         .btn-play { background-color: #00b894; }
         .btn-sleep { background-color: #6c5ce7; }
         .btn-clean { background-color: #0984e3; }
+        .btn-restart { background-color: #636e72; margin-top: 15px; width: 100%; }
 
     </style>
 </head>
@@ -83,9 +84,10 @@
 
         <div class="pet-image-container">
             <img th:if="${mascota.viva}" 
-                  th:src="@{'/Images/' + ${mascota.imagenEstado}}" 
-                  class="pet-image" alt="Ballena">
-             <div th:unless="${mascota.viva}" style="font-size: 100px;"></div>
+                 th:src="@{'/Images/' + ${mascota.imagenEstado}}" 
+                 class="pet-image" alt="Pollo">
+            
+            <div th:unless="${mascota.viva}" style="font-size: 100px;">👻</div>
         </div>
 
         <div class="stats-grid" th:if="${mascota.viva}">
@@ -107,11 +109,18 @@
             </div>
         </div>
 
-        <h3 th:unless="${mascota.viva}" style="color: red;">¡Oh no! Tu ballena ha muerto. Reinicia la app.</h3>
+        <div th:unless="${mascota.viva}">
+            <h3 style="color: #d63031;">¡Oh no! Pepe ha pasado a mejor vida... 🪦</h3>
+            <p>Sus estadísticas llegaron a un punto crítico.</p>
+            
+            <form action="/reiniciar" method="post">
+                <button class="btn-restart">Revivir a Pepe 🔄</button>
+            </form>
+        </div>
 
         <form action="/accion" method="post" class="actions" th:if="${mascota.viva}">
-            <button name="tipo" value="alimentar" class="btn-eat">Comer 🦐</button>
-            <button name="tipo" value="jugar" class="btn-play">Jugar 🌊</button>
+            <button name="tipo" value="alimentar" class="btn-eat">Comer 🌽</button>
+            <button name="tipo" value="jugar" class="btn-play">Jugar ⚽</button>
             <button name="tipo" value="dormir" class="btn-sleep">Dormir 💤</button>
             <button name="tipo" value="limpiar" class="btn-clean">Bañar 🧼</button>
         </form>
