@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MascotaController {
 
-    private Mascota miMascota = new Mascota("Wally"); // Nuestra ballena
+    private Mascota miMascota = new Mascota("Pepe"); // Nuestra ballena
 
     @GetMapping("/")
     public String verMascota(Model model) {
@@ -31,7 +31,7 @@ public class MascotaController {
     // --- NUEVA FUNCIÓN PARA REINICIAR ---
     @PostMapping("/reiniciar")
     public String reiniciar() {
-        miMascota = new Mascota("Wally"); // Crea una mascota nueva y fresca
+        miMascota = new Mascota("Pepe"); // Crea una mascota nueva y fresca
         return "redirect:/";
     }
 }

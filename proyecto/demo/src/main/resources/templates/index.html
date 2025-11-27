@@ -87,7 +87,7 @@
                  th:src="@{'/Images/' + ${mascota.imagenEstado}}" 
                  class="pet-image" alt="Pollo">
             
-            <div th:unless="${mascota.viva}" style="font-size: 100px;">👻</div>
+            <div th:unless="${mascota.viva}" style="font-size: 100px;"></div>
         </div>
 
         <div class="stats-grid" th:if="${mascota.viva}">
@@ -110,7 +110,7 @@
         </div>
 
         <div th:unless="${mascota.viva}">
-            <h3 style="color: #d63031;">¡Oh no! Pepe ha pasado a mejor vida... 🪦</h3>
+            <h3 style="color: #d63031;">¡Oh no! Tu ballena ha pasado a mejor vida... 🪦</h3>
             <p>Sus estadísticas llegaron a un punto crítico.</p>
             
             <form action="/reiniciar" method="post">
