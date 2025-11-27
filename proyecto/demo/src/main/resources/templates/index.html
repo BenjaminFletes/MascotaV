@@ -5,7 +5,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* Fondo cielo/marino */
+            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,7 +22,6 @@
         }
         h1 { color: #0984e3; margin-bottom: 10px; }
         
-        /* Estilos para la imagen dinámica */
         .pet-image-container {
             height: 200px;
             display: flex;
@@ -37,7 +36,6 @@
         }
         .pet-image:hover { transform: scale(1.05); }
 
-        /* Estilos para las barras de estado */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -52,10 +50,8 @@
             height: 15px;
             overflow: hidden;
         }
-        /* La magia de Thymeleaf: el ancho se calcula en el servidor */
         .progress-fill { height: 100%; transition: width 0.5s ease; }
 
-        /* Botones de acción */
         .actions {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -67,14 +63,12 @@
             font-size: 1em; transition: opacity 0.2s;
         }
         button:hover { opacity: 0.9; transform: translateY(-2px); }
-        button:active { transform: translateY(0); }
         
         .btn-eat { background-color: #fdcb6e; }
         .btn-play { background-color: #00b894; }
         .btn-sleep { background-color: #6c5ce7; }
         .btn-clean { background-color: #0984e3; }
         .btn-restart { background-color: #636e72; margin-top: 15px; width: 100%; }
-
     </style>
 </head>
 <body>
@@ -83,11 +77,8 @@
         <h1 th:text="${mascota.nombre}">Pepe</h1>
 
         <div class="pet-image-container">
-            <img th:if="${mascota.viva}" 
-                 th:src="@{'/Images/' + ${mascota.imagenEstado}}" 
+            <img th:src="@{'/Images/' + ${mascota.imagenEstado}}" 
                  class="pet-image" alt="Pollo">
-            
-            <div th:unless="${mascota.viva}" style="font-size: 100px;"></div>
         </div>
 
         <div class="stats-grid" th:if="${mascota.viva}">
@@ -110,7 +101,7 @@
         </div>
 
         <div th:unless="${mascota.viva}">
-            <h3 style="color: #d63031;">¡Oh no! Tu ballena ha pasado a mejor vida...</h3>
+            <h3 style="color: #d63031;">¡Oh no! Tu ballena flopeo...</h3>
             <p>Sus estadísticas llegaron a un punto crítico.</p>
             
             <form action="/reiniciar" method="post">
