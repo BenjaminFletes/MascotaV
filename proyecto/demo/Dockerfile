@@ -1,4 +1,6 @@
-FROM openjdk:21-jdk-slim
+# Usamos Eclipse Temurin (la versión estándar actual de Java 21)
+FROM eclipse-temurin:21-jdk
+
 WORKDIR /app
 COPY . .
 RUN chmod +x mvnw
